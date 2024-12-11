@@ -1,5 +1,5 @@
 
-{% extends "main-templates/base.html" %}
+{% extends "main_templates/base.html" %}
 {% load static %}
 
 {% block content %}
@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="d-grid gap-2 col-2 mx-auto py-4">
-                    <a class="btn btn-warning" href="goods/catalog.html" role="button">Перейти в каталог</a>
+                    <a class="btn btn-warning" href="{% url "catalog:index" %}" role="button">Перейти в каталог</a>
                 </div>
 
             </div>

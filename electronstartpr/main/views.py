@@ -6,10 +6,10 @@ def index(request):
         'title': 'Электромаркет',
     }
 
-    return render(request, 'main-templates/index.html', context)
+    return render(request, 'main_templates/index.html', context)
 
 def contacts_page(request):
     context = {
         'title': 'Контакты',
     }
-    return render(request, 'main-templates/contacts.html', context)
+    return render(request, 'main_templates/contacts.html', context)

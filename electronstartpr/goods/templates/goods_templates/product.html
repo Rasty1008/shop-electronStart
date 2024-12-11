@@ -1,0 +1,38 @@
+{% extends "main_templates/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<main class="main">
+    <section class="product_card">
+        <div class="container-fluid">
+            <div class="main-wrapper ">
+
+                <div class="board-card d-flex justify-content-center">
+                    <div class="card mb-3" style="max-width: 920px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{% static "deps/img/avtomat.webp" %}" class="img-fluid rounded-start"
+                                    alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Автоматический выключатель 1P 32A</h5>
+                                    <p class="card-text">Автоматические выключатели ВА 47-29 предназначены для защиты  распределительных и групповых цепей,имеющих различную нагрузку.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Артикул: DS202012</li>
+                                    <li class="list-group-item">Бренд: ABB</li>
+                                    <li class="list-group-item">Цена: 1200тг</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

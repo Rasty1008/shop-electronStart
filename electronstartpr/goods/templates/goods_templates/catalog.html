@@ -1,0 +1,696 @@
+{% extends "main_templates/base.html" %}
+
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static "deps/css/catalog.css" %}">
+{% endblock %}
+
+{% block content %}
+        <main class="main">
+            <section class="products-page">
+                <div class="container-fluid">
+                    <div class="main-wrapper">
+                        <div class="row">
+
+                            <div class="category-menu col-3">
+
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                                aria-expanded="false" aria-controls="flush-collapseOne">
+                                                Тип устройства
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default" checked>
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Автоматические выключатели
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Дифференциальные автоматы
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        УЗО
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Автоматы защиты двигателя
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Модульные контакторы
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Силовые автоматические выключатели
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Контакторы
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Комплектующие к автоматам
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Комплектующие к контакторам
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Тепловые реле
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Реле напряжения
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Реле времени
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Импульсное реле
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Промежуточные реле
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Колодки
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        АВР/Рубильники
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Частотные преобразователи
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Стабилизаторы
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Плавные пуски
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Кнопки/Сигнальные лампы
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Наконечники/Гильзы
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Клемные колодки
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Щиты и комплектующие
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Концевые выключатели
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="categories_name"
+                                                        id="flexRadioDefault1" value="default">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Посты
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                                aria-expanded="false" aria-controls="flush-collapseTwo">
+                                                Бренд
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="list-group">
+                                                    <label class="list-group-item">
+                                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                                        electronStart
+                                                    </label>
+                                                    <label class="list-group-item">
+                                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                                        ABB
+                                                    </label>
+                                                    <label class="list-group-item">
+                                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                                        Siemens
+                                                    </label>
+                                                    <label class="list-group-item">
+                                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                                        Omron
+                                                    </label>
+                                                    <label class="list-group-item">
+                                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                                        Eaton
+                                                    </label>
+                                                    <label class="list-group-item">
+                                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                                        Legrand
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingThree">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                                aria-expanded="false" aria-controls="flush-collapseThree">
+                                                Количество полюсов
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingThree"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    1
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    2
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    3
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    4
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingFour">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
+                                                aria-expanded="false" aria-controls="flush-collapseFour">
+                                                Номинальный ток
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    1A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    2A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    3A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    6A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    10A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    16A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    20A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    25A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    32A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    40A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    50A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    63A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    100A
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    120A
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingFive">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
+                                                aria-expanded="false" aria-controls="flush-collapseFive">
+                                                Номинальное напряжение
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    12V
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    24V
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    48V
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    110V
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    220V
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    380V
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingSix">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseSix"
+                                                aria-expanded="false" aria-controls="flush-collapseSix">
+                                                Тип тока
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseSix" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    AC-Переменный
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    DC-Постоянный
+                                                </label>
+                                                <label class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                                    AC/DC-Универсальный
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="main-board-products col-9">
+                                <div class="row">
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-success dropdown-toggle btn-success" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Фильтры
+                                        </button>
+
+                                        <form action="" method="get" class="dropdown-menu bg-Light">
+                                            <p class="mx-3 mt-3">Сортировать:</p>
+                                            <div class="form-check mx-3">
+                                                <input class="form-check-input" type="radio" name="order_by"
+                                                    id="flexRadioDefault1" value="default" checked>
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    По умолчанию
+                                                </label>
+                                            </div>
+                                            <div class="form-check mx-3">
+                                                <input class="form-check-input" type="radio" name="order_by"
+                                                    id="flexRadioDefault2" value="price">
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Сначала дешевые
+                                                </label>
+                                            </div>
+                                            <div class="form-check mx-3">
+                                                <input class="form-check-input" type="radio" name="order_by"
+                                                    id="flexRadioDefault3" value="-price">
+                                                <label class="form-check-label" for="flexRadioDefault3">
+                                                    Сначала дорогие
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-success mx-3 mt-3">Применить</button>
+                                        </form>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="{% static "deps/img/avtomat.webp" %}" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="{% static "deps/img/avtomat.webp" %}" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="{% static "deps/img/avtomat.webp" %}" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="../48250186_w600_h600_48250186.webp" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="../48250186_w600_h600_48250186.webp" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="../48250186_w600_h600_48250186.webp" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="../48250186_w600_h600_48250186.webp" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="../48250186_w600_h600_48250186.webp" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="../48250186_w600_h600_48250186.webp" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="../48250186_w600_h600_48250186.webp" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="../48250186_w600_h600_48250186.webp" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="col-lg-4 col-md-6 py-3">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="../48250186_w600_h600_48250186.webp" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Автоматический выключатель 1P 16A</h5>
+                                                <p class="card-text">SH201-C16 16A 6kA</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Артикул: DS202012</li>
+                                                <li class="list-group-item">Бренд: ABB</li>
+                                                <li class="list-group-item">Цена: 1200тг</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+                                <nav aria-label="page-navigation">
+                                    <ul class="pagination justify-content-center my-3">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1"
+                                                aria-disabled="true">Предыдущая</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Следующая</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+{% endblock %}
