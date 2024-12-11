@@ -1,0 +1,56 @@
+
+.accordion-button:focus {
+    box-shadow: none;
+    z-index: 1;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #444444;
+    background-color: white;
+
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url(../img/Без\ названия.svg);
+}
+
+.form-check-input:checked {
+    background-color: #32cd32;
+    border-color: #32cd32;
+}
+
+.form-check-input:focus {
+    box-shadow: none;
+    border-color: #32cd32;
+}
+
+.btn-success {
+    background-color: #32cd32;
+    border-color: #32cd32;
+}
+
+.btn-success:focus {
+    background-color: #32cd32;
+    border-color: #32cd32;
+    box-shadow: none;
+}
+
+.btn-success:hover {
+    background-color: #32cd32;
+    border-color: #175217;
+}
+
+.page-link {
+    color: #444444;
+}
+
+.page-link:focus {
+    box-shadow: none;
+    color: #444444;
+}
+
+.page-link:hover {
+    color: #444444;
+}
+
+

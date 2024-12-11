@@ -1,0 +1,67 @@
+{% extends "main-templates/base.html" %}
+{% load static %}
+
+
+{% block content %}
+<main class="main">
+    <section class="contacts">
+        <div class="container-fluid">
+            <div class="main-wrapper ">
+                <div class="container-contacts">
+
+                    <div class="map py-3">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d363.26456319937796!2d76.8810630620944!3d43.24898001855118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3883696299553da7%3A0x13c78792b1aaa4b0!2sElektroN!5e0!3m2!1sru!2skz!4v1729086091394!5m2!1sru!2skz"
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                    <div class="contacts-wrapper">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="d-flex phones">
+                                    <div class="icon py-4">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                    <div class="numbers">
+                                        <a href="tel:+77273748313">+7 (727) 374 83 13</a><br>
+                                        <a href="tel:+77017699110">+7 (701) 769 91 10</a><br>
+                                        <a href="tel:+77021021212">+7 (702) 102 12 12</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mail-inst">
+                                    <div class="d-flex justify-content-center container-mail">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </div>
+                                        <a href="#">electronstart@mail.ru</a>
+                                    </div>
+                                    <div class="d-flex justify-content-center container-inst">
+                                        <div class="icon">
+                                            <i class="fa-brands fa-instagram"></i>
+                                        </div>
+                                        <a href="#">@electron.start</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="d-flex justify-content-end adreess">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <p>г.Алматы, ул. Тургут Озала 103"Б"</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
