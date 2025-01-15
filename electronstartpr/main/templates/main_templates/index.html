@@ -14,12 +14,16 @@
 
                     <div class="row table-category">
 
+                        {% for category in categories %}                        
                         <div class="col-md-3 category">
                             <a href="goods/catalog.html">
                                 <img src="{% static "deps/img/category/1.png" %}" alt="">
-                                <p>Автоматические выключатели</p>
+                                <p>{{category.name}}</p>
                             </a>
-                        </div>
+                        </div>{% endfor %}
+
+
+                        <!--
                         <div class="col-md-3 category">
                             <a href="goods/catalog.html">
                                 <img src="{% static "deps/img/category/2.png" %}" alt="">
@@ -85,7 +89,9 @@
                                 <img src="{% static "deps/img/category/14.png" %}" alt="">
                                 <p>Щиты и комплектующие</p>
                             </a>
-                        </div>
+                        </div>-->
+
+
                     </div>
                 </div>
 
