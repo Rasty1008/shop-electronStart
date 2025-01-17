@@ -67,175 +67,108 @@
                                         </div>
                                     </div>
 
-                                    {% for specification in specifications %}
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingThree">
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
                                                 aria-expanded="false" aria-controls="flush-collapseThree">
-                                                {{specification.name}}
+                                                {{quantity_of_poles.name}}
                                             </button>
                                         </h2>
                                         <div id="flush-collapseThree" class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingThree"
                                             data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
+                                                
+                                                {% for pole in product_quantity_of_poles %}
                                                 <label class="list-group-item">
                                                     <input class="form-check-input me-1" type="checkbox" value="">
-                                                    1
+                                                    {{pole.value}}
                                                 </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    2
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    3
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    4
-                                                </label>
+                                                {% endfor %}
+
                                             </div>
                                         </div>
                                     </div>
-                                    {% endfor %}
 
 
-                            <!--        <div class="accordion-item">
+                                   <div class="accordion-item">
+
                                         <h2 class="accordion-header" id="flush-headingFour">
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
                                                 aria-expanded="false" aria-controls="flush-collapseFour">
-                                                Номинальный ток
+                                                {{rated_amperage.name}}
                                             </button>
                                         </h2>
+
                                         <div id="flush-collapseFour" class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
+
+                                                {% for amp in product_rated_amperage %}
                                                 <label class="list-group-item">
                                                     <input class="form-check-input me-1" type="checkbox" value="">
-                                                    1A
+                                                    {{amp.value}}
                                                 </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    2A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    3A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    6A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    10A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    16A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    20A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    25A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    32A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    40A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    50A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    63A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    100A
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    120A
-                                                </label>
+                                                {% endfor %}
+
+
                                             </div>
                                         </div>
+
                                     </div>
+
                                     <div class="accordion-item">
+
                                         <h2 class="accordion-header" id="flush-headingFive">
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
                                                 aria-expanded="false" aria-controls="flush-collapseFive">
-                                                Номинальное напряжение
+                                                {{rated_voltage.name}}
                                             </button>
                                         </h2>
+
                                         <div id="flush-collapseFive" class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
+                                                
+                                                {% for volt in product_rated_voltage %}
                                                 <label class="list-group-item">
                                                     <input class="form-check-input me-1" type="checkbox" value="">
-                                                    12V
+                                                    {{volt.value}}
                                                 </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    24V
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    48V
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    110V
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    220V
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    380V
-                                                </label>
+                                                {% endfor %}
+
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="accordion-item">
+
                                         <h2 class="accordion-header" id="flush-headingSix">
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseSix"
                                                 aria-expanded="false" aria-controls="flush-collapseSix">
-                                                Тип тока
+                                                {{amperage_type.name}}
                                             </button>
                                         </h2>
+
                                         <div id="flush-collapseSix" class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
+
+                                                {% for amp_type in product_amperage_type %}
                                                 <label class="list-group-item">
                                                     <input class="form-check-input me-1" type="checkbox" value="">
-                                                    AC-Переменный
+                                                    {{amp_type.value}}
                                                 </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    DC-Постоянный
-                                                </label>
-                                                <label class="list-group-item">
-                                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                                    AC/DC-Универсальный
-                                                </label>
+                                                {% endfor %}
+
                                             </div>
                                         </div>
-                                    </div>-->
+
+                                    </div>
 
 
                                 </div>
