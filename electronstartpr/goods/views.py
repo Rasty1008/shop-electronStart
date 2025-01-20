@@ -1,8 +1,10 @@
 from django.shortcuts import render
 
-from .models import Catigories, Brands, Specifications, ProductSpecifications
+from .models import Catigories, Brands, Specifications, ProductSpecifications, Products
 
 def catalog(request):
+
+    goods = Products.objects.all()
 
     #Переменные Тип устройства и бренды
     categories_in_catalog = Catigories.objects.all()
@@ -23,90 +25,7 @@ def catalog(request):
 
     context = {
         "title": "Каталог",
-        "goods": [       
-        {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200},
-
-        {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200},
-
-        {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200},
-
-        {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200},
-
-         {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200},
-
-        {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200},
-
-        {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200},
-
-        {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200},
-
-         {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200},
-
-        {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200},
-
-        {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200},
-
-        {'image': 'deps/img/avtomat.webp',
-         'name': 'Автоматический выключатель 1P 16A',
-         'description': 'Автоматический выключатель 1P 16A 6kA AC.',
-         'article': 'DS202012',
-         'brand': 'ABB',
-         'price': 1200}, ],
+        "goods": goods,
 
          'categories_in_catalog': categories_in_catalog,
          'brands': brands,
