@@ -12,18 +12,23 @@
                     <div class="card mb-3" style="max-width: 920px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="{% static "deps/img/avtomat.webp" %}" class="img-fluid rounded-start"
-                                    alt="...">
+                                {% if product.image %}
+                                <img src="{{ product.image.url }}" class="img-fluid rounded-start"
+                                    alt="{{ product.name }}">
+                                {% else %}
+                                <img src="{% static "deps/img/Not found image.png" %}" class="card-img-top"
+                                alt="...">
+                                {% endif %}
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">Автоматический выключатель 1P 32A</h5>
-                                    <p class="card-text">Автоматические выключатели ВА 47-29 предназначены для защиты  распределительных и групповых цепей,имеющих различную нагрузку.</p>
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text">{{ product.description }}</p>
                                 </div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Артикул: DS202012</li>
-                                    <li class="list-group-item">Бренд: ABB</li>
-                                    <li class="list-group-item">Цена: 1200тг</li>
+                                    <li class="list-group-item">Артикул: {{ product.article }}</li>
+                                    <li class="list-group-item">Бренд: {{ product.brand_id }}</li>
+                                    <li class="list-group-item">Цена: {{ product.price }}</li>
                                 </ul>
 
                             </div>

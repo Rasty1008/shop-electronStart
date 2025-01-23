@@ -34,7 +34,7 @@
                                                     <input class="form-check-input" type="radio" name="categories_name"
                                                         id="flexRadioDefault1" value="default" checked>
                                                     <label class="form-check-label" for="flexRadioDefault1">
-                                                        {{category.name}}
+                                                        {{ category.name }}
                                                     </label>
                                                 </div>
                                                 {% endfor %}
@@ -58,7 +58,7 @@
                                                     {% for brand in brands %}
                                                     <label class="list-group-item">
                                                         <input class="form-check-input me-1" type="checkbox" value="">
-                                                        {{brand.name}}
+                                                        {{ brand.name }}
                                                     </label>
                                                     {% endfor %}
 
@@ -72,7 +72,7 @@
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
                                                 aria-expanded="false" aria-controls="flush-collapseThree">
-                                                {{quantity_of_poles.name}}
+                                                {{ quantity_of_poles.name }}
                                             </button>
                                         </h2>
                                         <div id="flush-collapseThree" class="accordion-collapse collapse"
@@ -83,7 +83,7 @@
                                                 {% for pole in product_quantity_of_poles %}
                                                 <label class="list-group-item">
                                                     <input class="form-check-input me-1" type="checkbox" value="">
-                                                    {{pole.value}}
+                                                    {{ pole.value }}
                                                 </label>
                                                 {% endfor %}
 
@@ -98,7 +98,7 @@
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
                                                 aria-expanded="false" aria-controls="flush-collapseFour">
-                                                {{rated_amperage.name}}
+                                                {{ rated_amperage.name }}
                                             </button>
                                         </h2>
 
@@ -109,7 +109,7 @@
                                                 {% for amp in product_rated_amperage %}
                                                 <label class="list-group-item">
                                                     <input class="form-check-input me-1" type="checkbox" value="">
-                                                    {{amp.value}}
+                                                    {{ amp.value }}
                                                 </label>
                                                 {% endfor %}
 
@@ -125,7 +125,7 @@
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
                                                 aria-expanded="false" aria-controls="flush-collapseFive">
-                                                {{rated_voltage.name}}
+                                                {{ rated_voltage.name }}
                                             </button>
                                         </h2>
 
@@ -136,7 +136,7 @@
                                                 {% for volt in product_rated_voltage %}
                                                 <label class="list-group-item">
                                                     <input class="form-check-input me-1" type="checkbox" value="">
-                                                    {{volt.value}}
+                                                    {{ volt.value }}
                                                 </label>
                                                 {% endfor %}
 
@@ -150,7 +150,7 @@
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseSix"
                                                 aria-expanded="false" aria-controls="flush-collapseSix">
-                                                {{amperage_type.name}}
+                                                {{ amperage_type.name }}
                                             </button>
                                         </h2>
 
@@ -161,7 +161,7 @@
                                                 {% for amp_type in product_amperage_type %}
                                                 <label class="list-group-item">
                                                     <input class="form-check-input me-1" type="checkbox" value="">
-                                                    {{amp_type.value}}
+                                                    {{ amp_type.value }}
                                                 </label>
                                                 {% endfor %}
 
@@ -231,7 +231,7 @@
                                                 <li class="list-group-item">Цена: {{ product.price }} тенге</li>
                                             </ul>
                                             <div class="card-body">
-                                                <a href="product_cart.html" class="card-link">Перейти к товару...</a>
+                                                <a href="{% url "catalog:product" product.slug %}" class="card-link"><b>Перейти к товару</b></a>
                                             </div>
                                         </div>
                                     </div>

@@ -1,6 +1,7 @@
 
 {% extends "main_templates/base.html" %}
 {% load static %}
+{% load goods_tags %}
 
 {% block content %}
 <main class="main">
@@ -14,9 +15,10 @@
 
                     <div class="row table-category">
 
+                        {% categories_tag as categories %}
                         {% for category in categories %}                        
                         <div class="col-md-3 category">
-                            <a href="goods/catalog.html">
+                            <a href="{% url "catalog:index" %}">
                                 <img src="{% static "deps/img/category/1.png" %}" alt="">
                                 <p>{{category.name}}</p>
                             </a>
