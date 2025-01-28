@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 
 from .models import Catigories, Brands, Specifications, ProductSpecifications, Products
 
-def catalog(request):
+def catalog(request, page=1):
 
     goods = Products.objects.all()
 
@@ -22,10 +23,12 @@ def catalog(request):
     product_rated_voltage = ProductSpecifications.objects.filter(value__endswith='V').values_list('value', flat=True).distinct() #Номинальное напряжение
     product_amperage_type = ProductSpecifications.objects.filter(value__in=['AC', 'DC', 'AC-DC']).distinct() #Тип тока
 
+    paginator = Paginator(goods, 3)
+    current_page = paginator.page(page)
 
     context = {
         "title": "Каталог",
-        "goods": goods,
+        "goods": current_page,
 
          'categories_in_catalog': categories_in_catalog,
          'brands': brands,

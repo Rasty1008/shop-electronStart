@@ -53,4 +53,10 @@
     color: #444444;
 }
 
+.page-item.active .page-link {
+    background-color: #444444;
+    border-color: #444444;
+    z-index: 1;
+}
+
 
