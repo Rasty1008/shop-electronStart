@@ -5,8 +5,7 @@ from .models import Catigories, Brands, Specifications, ProductSpecifications, P
 
 def catalog(request):
 
-    page = request.GET.get('page', 1)
-
+    #Переменная все товары
     goods = Products.objects.all()
 
     #Переменные Тип устройства и бренды
@@ -24,6 +23,12 @@ def catalog(request):
     product_rated_amperage = ProductSpecifications.objects.filter(value__endswith='A').values_list('value', flat=True).distinct() #Номинальный ток
     product_rated_voltage = ProductSpecifications.objects.filter(value__endswith='V').values_list('value', flat=True).distinct() #Номинальное напряжение
     product_amperage_type = ProductSpecifications.objects.filter(value__in=['AC', 'DC', 'AC-DC']).distinct() #Тип тока
+
+    page = request.GET.get('page', 1)
+    order_by = request.GET.get('order_by', None)
+
+    if order_by and order_by != 'default':
+        goods = goods.order_by(order_by)
 
     paginator = Paginator(goods, 3)
     current_page = paginator.page(int(page))
@@ -48,6 +53,8 @@ def catalog(request):
     }
 
     return render(request, 'goods_templates/catalog.html', context)
+
+
 
 def product(request, product_slug):
     product = Products.objects.get(slug=product_slug)

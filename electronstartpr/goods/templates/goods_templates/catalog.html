@@ -184,25 +184,28 @@
                                             Фильтры
                                         </button>
 
-                                        <form action="" method="get" class="dropdown-menu bg-Light">
+                                        <form action="{% url "catalog:index" %}" method="get" class="dropdown-menu bg-Light">
                                             <p class="mx-3 mt-3">Сортировать:</p>
                                             <div class="form-check mx-3">
                                                 <input class="form-check-input" type="radio" name="order_by"
-                                                    id="flexRadioDefault1" value="default" checked>
+                                                    id="flexRadioDefault1" value="default"
+                                                    {% if not request.GET.order_by or request.GET.order_by == 'default' %}checked{% endif %}>
                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                     По умолчанию
                                                 </label>
                                             </div>
                                             <div class="form-check mx-3">
                                                 <input class="form-check-input" type="radio" name="order_by"
-                                                    id="flexRadioDefault2" value="price">
+                                                    id="flexRadioDefault2" value="price"
+                                                    {% if request.GET.order_by == 'price' %}checked{% endif %}>
                                                 <label class="form-check-label" for="flexRadioDefault2">
                                                     Сначала дешевые
                                                 </label>
                                             </div>
                                             <div class="form-check mx-3">
                                                 <input class="form-check-input" type="radio" name="order_by"
-                                                    id="flexRadioDefault3" value="-price">
+                                                    id="flexRadioDefault3" value="-price"
+                                                    {% if request.GET.order_by == '-price' %}checked{% endif %}>
                                                 <label class="form-check-label" for="flexRadioDefault3">
                                                     Сначала дорогие
                                                 </label>
@@ -244,9 +247,7 @@
                                 <nav aria-label="page-navigation">
                                     <ul class="pagination justify-content-center my-3">
                                         <li class="page-item {% if not goods.has_previous %}disabled{% endif %}">
-                                            <a class="page-link" href="{% if goods.has_previous %}?page={{goods.previous_page_number}}{% else %}
-                                            #
-                                            {% endif %}">Предыдущая</a>
+                                            <a class="page-link" href="{% if goods.has_previous %}?page={{goods.previous_page_number}}{% else %}#{% endif %}">Предыдущая</a>
                                         </li>
 
                                         {% for page in goods.paginator.page_range %}
@@ -258,9 +259,7 @@
                                         {% endfor %}
 
                                         <li class="page-item {% if not goods.has_next %}disabled{% endif %}">
-                                            <a class="page-link" href="{% if goods.has_next %}?page={{goods.next_page_number}}{% else %}
-                                            #
-                                            {% endif %}">Следующая</a>
+                                            <a class="page-link" href="{% if goods.has_next %}?page={{goods.next_page_number}}{% else %}#{% endif %}">Следующая</a>
                                         </li>
                                     </ul>
                                 </nav>
