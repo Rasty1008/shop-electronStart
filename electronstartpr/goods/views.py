@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 
-from .models import Catigories, Brands, Specifications, ProductSpecifications, Products
+from .models import Categories, Brands, Products, Quantity_of_poles, Rated_amperage, Rated_voltage, Amperage_type
 
 def catalog(request):
 
@@ -9,21 +9,15 @@ def catalog(request):
     goods = Products.objects.all()
 
     #Переменные Тип устройства и бренды
-    categories_in_catalog = Catigories.objects.all()
+    categories_in_catalog = Categories.objects.all()
     brands = Brands.objects.all()
     
-    #Переменные характеристик   
-    quantity_of_poles = Specifications.objects.get(id=1) #Кол-во полюсов
-    rated_amperage = Specifications.objects.get(id=2) #Ном.ток
-    rated_voltage = Specifications.objects.get(id=3) #Ном.напряжение
-    amperage_type = Specifications.objects.get(id=4) #тип тока
-
-    #Переменные характеристик продукта
-    product_quantity_of_poles = ProductSpecifications.objects.filter(value__endswith='P').distinct() #Кол-во полюсов
-    product_rated_amperage = ProductSpecifications.objects.filter(value__endswith='A').values_list('value', flat=True).distinct() #Номинальный ток
-    product_rated_voltage = ProductSpecifications.objects.filter(value__endswith='V').values_list('value', flat=True).distinct() #Номинальное напряжение
-    product_amperage_type = ProductSpecifications.objects.filter(value__in=['AC', 'DC', 'AC-DC']).distinct() #Тип тока
-
+    #Переменные характеристик
+    product_quantity_of_poles = Quantity_of_poles.objects.all() #Кол-во полюсов
+    product_rated_amperage = Rated_amperage.objects.all().order_by('value') #Ном.ток
+    product_rated_voltage = Rated_voltage.objects.all() #Ном.напряжение
+    product_amperage_type = Amperage_type.objects.all() #тип тока
+       
     page = request.GET.get('page', 1)
     order_by = request.GET.get('order_by', None)
 
@@ -39,12 +33,6 @@ def catalog(request):
 
          'categories_in_catalog': categories_in_catalog,
          'brands': brands,
-
-         'quantity_of_poles': quantity_of_poles,
-         'rated_amperage': rated_amperage,
-         'rated_voltage': rated_voltage,
-         'amperage_type': amperage_type,
-
          'product_quantity_of_poles': product_quantity_of_poles,
          'product_rated_amperage':  product_rated_amperage,
          'product_rated_voltage': product_rated_voltage,

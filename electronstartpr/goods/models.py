@@ -1,6 +1,6 @@
 from django.db import models
 
-class Catigories(models.Model):
+class Categories(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Название')
     slug = models.SlugField(max_length=150, unique=True, blank=True, null=True, verbose_name='URL')
 
@@ -27,6 +27,49 @@ class Brands(models.Model):
         return self.name
 
 
+class Quantity_of_poles(models.Model):
+    value = models.CharField(max_length=20, verbose_name='Количество полюсов')
+
+    class Meta:
+        db_table = 'quantity_of_poles'
+        verbose_name = 'Количество полюсов'
+
+    def __str__(self):
+        return self.value
+
+
+class Rated_amperage(models.Model):
+    value = models.CharField(max_length=20, verbose_name='Номинальный ток')
+
+    class Meta:
+        db_table = 'rated_amperage'
+        verbose_name = 'Номинальный ток'
+
+    def __str__(self):
+        return self.value
+
+
+class Rated_voltage(models.Model):
+    value = models.CharField(max_length=20, verbose_name='Номинальное напряжение')
+
+    class Meta:
+        db_table = 'rated_voltage'
+        verbose_name = 'Номинальное напряжение'
+
+    def __str__(self):
+        return self.value
+
+
+class Amperage_type(models.Model):
+    value = models.CharField(max_length=20, verbose_name='Тип тока')
+
+    class Meta:
+        db_table = 'amperage_type'
+        verbose_name = 'Тип тока'
+
+    def __str__(self):
+        return self.value
+
 
 
 class Products(models.Model):
@@ -36,9 +79,12 @@ class Products(models.Model):
     article = models.CharField(max_length=100, unique=True, verbose_name='Артикул')
     price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2, verbose_name='Цена')
     image = models.ImageField(upload_to='goods_images', blank=True, null=True, verbose_name='Изображение')
-    category_id = models.ForeignKey(to=Catigories, on_delete=models.CASCADE, verbose_name='Категория')
-    brand_id = models.ForeignKey(to=Brands, on_delete=models.CASCADE, verbose_name='Бренд')
-    
+    category_id = models.ForeignKey(to=Categories, null=True, on_delete=models.CASCADE, verbose_name='Категория')
+    brand_id = models.ForeignKey(to=Brands, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Бренд')
+    quantity_of_poles_id = models.ForeignKey(to=Quantity_of_poles, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Количество полюсов')
+    rated_amperage_id = models.ForeignKey(to=Rated_amperage, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Номинальный ток')
+    rated_voltage_id = models.ForeignKey(to=Rated_voltage, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Номинальное напряжение')
+    amperage_type_id = models.ForeignKey(to=Amperage_type, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Тип тока')
 
     class Meta:
         db_table = 'product'
@@ -51,29 +97,6 @@ class Products(models.Model):
 
 
 
-class Specifications(models.Model):
-    name = models.CharField(max_length=100, unique=True, verbose_name='Название')
-
-    class Meta:
-        db_table = 'specispecification'
-        verbose_name = 'Характеристика'
-        verbose_name_plural = 'Характеристики'
-
-    def __str__(self):
-        return self.name
 
 
 
-
-class ProductSpecifications(models.Model):
-    product_id = models.ForeignKey(to=Products, on_delete=models.PROTECT, verbose_name='Товар')
-    specification_id = models.ForeignKey(to=Specifications, on_delete=models.PROTECT, verbose_name='Характеристика')
-    value = models.CharField(max_length=20, unique=False, blank=True, null=True, verbose_name='Значение')
-
-    class Meta:
-        db_table = 'product_specification'
-        verbose_name = 'Характеристику товара'
-        verbose_name_plural = 'Характеристики товаров'
-
-    def __str__(self):
-        return self.value
