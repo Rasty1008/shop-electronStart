@@ -14,7 +14,7 @@ def catalog(request):
     
     #Переменные характеристик
     product_quantity_of_poles = Quantity_of_poles.objects.all() #Кол-во полюсов
-    product_rated_amperage = Rated_amperage.objects.all().order_by('value') #Ном.ток
+    product_rated_amperage = Rated_amperage.objects.all() #Ном.ток
     product_rated_voltage = Rated_voltage.objects.all() #Ном.напряжение
     product_amperage_type = Amperage_type.objects.all() #тип тока
        
