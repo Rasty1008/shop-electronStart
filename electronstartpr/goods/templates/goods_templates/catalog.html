@@ -217,6 +217,14 @@
                                             <button type="submit" class="btn btn-success mx-3 mt-3">Применить</button>
                                         </form>
                                     </div>
+                                    
+
+                                    {% if request.GET.q %}
+                                    <h2 class="text-center main-title"><span>Результаты поиска: {{ request.GET.q }}</span></h2>
+                                    {% if not goods %}
+                                    <h2 class="text-center main-title">Нет результатов</span></h2>
+                                    {% endif %}
+                                    {% endif %}
 
                                     {% for product in goods %}
                                     <div class="col-lg-4 col-md-6 py-3">
@@ -248,6 +256,7 @@
 
                                 </div>
                                 
+                            {% if goods %}
                                 <nav aria-label="page-navigation">
                                     <ul class="pagination justify-content-center my-3">
                                         <li class="page-item {% if not goods.has_previous %}disabled{% endif %}">
@@ -267,6 +276,8 @@
                                         </li>
                                     </ul>
                                 </nav>
+                            {% endif %}
+
 
                             </div>
 
