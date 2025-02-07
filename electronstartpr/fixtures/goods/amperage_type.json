@@ -1,0 +1,23 @@
+[
+    {
+        "model": "goods.amperage_type",
+        "pk": 1,
+        "fields": {
+            "value": "AC"
+        }
+    },
+    {
+        "model": "goods.amperage_type",
+        "pk": 2,
+        "fields": {
+            "value": "DC"
+        }
+    },
+    {
+        "model": "goods.amperage_type",
+        "pk": 3,
+        "fields": {
+            "value": "AC-DC"
+        }
+    }
+]

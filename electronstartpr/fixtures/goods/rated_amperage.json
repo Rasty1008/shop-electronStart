@@ -1,0 +1,58 @@
+[
+    {
+        "model": "goods.rated_amperage",
+        "pk": 1,
+        "fields": {
+            "value": "10"
+        }
+    },
+    {
+        "model": "goods.rated_amperage",
+        "pk": 2,
+        "fields": {
+            "value": "16"
+        }
+    },
+    {
+        "model": "goods.rated_amperage",
+        "pk": 3,
+        "fields": {
+            "value": "25"
+        }
+    },
+    {
+        "model": "goods.rated_amperage",
+        "pk": 4,
+        "fields": {
+            "value": "63"
+        }
+    },
+    {
+        "model": "goods.rated_amperage",
+        "pk": 5,
+        "fields": {
+            "value": "250"
+        }
+    },
+    {
+        "model": "goods.rated_amperage",
+        "pk": 6,
+        "fields": {
+            "value": "400"
+        }
+    },
+    {
+        "model": "goods.rated_amperage",
+        "pk": 7,
+        "fields": {
+            "value": "630"
+        }
+    },
+    {
+        "model": "goods.rated_amperage",
+        "pk": 8,
+        "fields": {
+            "value": "20"
+        }
+    }
+]

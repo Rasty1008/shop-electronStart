@@ -185,12 +185,15 @@
                                             Фильтры
                                         </button>
 
-                                        <form action="{% url "catalog:index" %}" method="get" class="dropdown-menu bg-Light">
+                                        <form action="{% if request.GET.q %}{% url "catalog:search" %}{% else %}{% url "catalog:index" %}{% endif %}" method="get" class="dropdown-menu bg-Light">
                                             <p class="mx-3 mt-3">Сортировать:</p>
                                             <div class="form-check mx-3">
                                                 <input class="form-check-input" type="radio" name="order_by"
                                                     id="flexRadioDefault1" value="default"
                                                     {% if not request.GET.order_by or request.GET.order_by == 'default' %}checked{% endif %}>
+                                                    {% if request.GET.q %}
+                                                        <input type="hidden" name="q" value="{{ request.GET.q }}">
+                                                    {% endif %}
                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                     По умолчанию
                                                 </label>
@@ -206,7 +209,7 @@
                                             <div class="form-check mx-3">
                                                 <input class="form-check-input" type="radio" name="order_by"
                                                     id="flexRadioDefault3" value="-price"
-                                                    {% if request.GET.order_by == '-price' %}checked{% endif %}>
+                                                    {% if request.GET.order_by == "-price" %}checked{% endif %}>
                                                 <label class="form-check-label" for="flexRadioDefault3">
                                                     Сначала дорогие
                                                 </label>

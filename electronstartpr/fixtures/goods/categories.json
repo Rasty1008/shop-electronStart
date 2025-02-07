@@ -1,199 +1,199 @@
 [
     {
-        "model": "goods.catigories",
-        "pk": 2,
+        "model": "goods.categories",
+        "pk": 1,
         "fields": {
             "name": "Автоматические выключатели",
             "slug": "avtomaticheskie-vyklyuchateli"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 3,
+        "model": "goods.categories",
+        "pk": 2,
         "fields": {
             "name": "Дифференциальные автоматы",
             "slug": "differencialnye-avtomaty"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 4,
+        "model": "goods.categories",
+        "pk": 3,
         "fields": {
             "name": "УЗО",
             "slug": "uzo"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 5,
+        "model": "goods.categories",
+        "pk": 4,
         "fields": {
             "name": "Автоматы защиты двигателя",
             "slug": "avtomaty-zashity-dvigatelya"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 6,
+        "model": "goods.categories",
+        "pk": 5,
         "fields": {
             "name": "Модульные контакторы",
             "slug": "modulnye-kontaktory"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 7,
+        "model": "goods.categories",
+        "pk": 6,
         "fields": {
             "name": "Силовые автоматические выключатели",
             "slug": "silovye-avtomaticheskie-vyklyuchateli"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 8,
+        "model": "goods.categories",
+        "pk": 7,
         "fields": {
             "name": "Контакторы",
             "slug": "kontaktory"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 9,
+        "model": "goods.categories",
+        "pk": 8,
         "fields": {
             "name": "Комплектующие к автоматам",
             "slug": "komplektuyushie-k-avtomatam"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 10,
+        "model": "goods.categories",
+        "pk": 9,
         "fields": {
             "name": "Комплектующие к контакторам",
             "slug": "komplektuyushie-k-kontaktoram"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 11,
+        "model": "goods.categories",
+        "pk": 10,
         "fields": {
             "name": "Тепловые реле",
             "slug": "teplovye-rele"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 12,
+        "model": "goods.categories",
+        "pk": 11,
         "fields": {
             "name": "Реле напряжения",
             "slug": "rele-napryazheniya"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 13,
+        "model": "goods.categories",
+        "pk": 12,
         "fields": {
             "name": "Реле времени",
             "slug": "rele-vremeni"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 14,
+        "model": "goods.categories",
+        "pk": 13,
         "fields": {
             "name": "Импульсное реле",
             "slug": "impulsnoe-rele"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 15,
+        "model": "goods.categories",
+        "pk": 14,
         "fields": {
             "name": "Промежуточные реле",
             "slug": "promezhutochnye-rele"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 16,
+        "model": "goods.categories",
+        "pk": 15,
         "fields": {
             "name": "Колодки",
             "slug": "kolodki"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 17,
+        "model": "goods.categories",
+        "pk": 16,
         "fields": {
             "name": "АВР/Рубильники",
             "slug": "avrrubilniki"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 18,
+        "model": "goods.categories",
+        "pk": 17,
         "fields": {
             "name": "Частотные преобразователи",
             "slug": "chastotnye-preobrazovateli"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 19,
+        "model": "goods.categories",
+        "pk": 18,
         "fields": {
             "name": "Стабилизаторы",
             "slug": "stabilizatory"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 20,
+        "model": "goods.categories",
+        "pk": 19,
         "fields": {
             "name": "Плавные пуски",
             "slug": "plavnye-puski"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 21,
+        "model": "goods.categories",
+        "pk": 20,
         "fields": {
             "name": "Кнопки/Сигнальные лампы",
             "slug": "knopkisignalnye-lampy"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 22,
+        "model": "goods.categories",
+        "pk": 21,
         "fields": {
             "name": "Наконечники/Гильзы",
             "slug": "nakonechnikigilzy"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 23,
+        "model": "goods.categories",
+        "pk": 22,
         "fields": {
             "name": "Клемные колодки",
             "slug": "klemnye-kolodki"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 24,
+        "model": "goods.categories",
+        "pk": 23,
         "fields": {
             "name": "Щиты и комплектующие",
             "slug": "shity-i-komplektuyushie"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 25,
+        "model": "goods.categories",
+        "pk": 24,
         "fields": {
             "name": "Концевые выключатели",
             "slug": "koncevye-vyklyuchateli"
         }
     },
     {
-        "model": "goods.catigories",
-        "pk": 26,
+        "model": "goods.categories",
+        "pk": 25,
         "fields": {
             "name": "Посты",
             "slug": "posty"

@@ -1,0 +1,50 @@
+[
+    {
+        "model": "goods.brands",
+        "pk": 1,
+        "fields": {
+            "name": "electronStart",
+            "slug": "electronstart"
+        }
+    },
+    {
+        "model": "goods.brands",
+        "pk": 2,
+        "fields": {
+            "name": "ABB",
+            "slug": "abb"
+        }
+    },
+    {
+        "model": "goods.brands",
+        "pk": 3,
+        "fields": {
+            "name": "Omron",
+            "slug": "omron"
+        }
+    },
+    {
+        "model": "goods.brands",
+        "pk": 4,
+        "fields": {
+            "name": "Eaton",
+            "slug": "eaton"
+        }
+    },
+    {
+        "model": "goods.brands",
+        "pk": 5,
+        "fields": {
+            "name": "Legrand",
+            "slug": "legrand"
+        }
+    },
+    {
+        "model": "goods.brands",
+        "pk": 6,
+        "fields": {
+            "name": "Siemens",
+            "slug": "siemens"
+        }
+    }
+]

@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 
 from .models import Categories, Brands, Products, Quantity_of_poles, Rated_amperage, Rated_voltage, Amperage_type
+from .utils import q_search
+
 
 def catalog(request):
 
@@ -20,6 +22,10 @@ def catalog(request):
        
     page = request.GET.get('page', 1)
     order_by = request.GET.get('order_by', None)
+    query = request.GET.get('q', None)
+
+    if query:
+        goods = q_search(query)
 
     if order_by and order_by != 'default':
         goods = goods.order_by(order_by)
