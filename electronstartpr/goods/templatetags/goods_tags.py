@@ -3,14 +3,19 @@ from django.utils.http import urlencode
 
 from goods.models import Categories
 
+import json
+
+
 register = template.Library()
 
 #Выбранные товары на главной странице
 @register.simple_tag()
 def categories_tag():
-    required_category = (1, 2, 4, 5, 6, 7, 11, 16, 17, 20, 21, 23)
+    with open('electronstartpr/goods/templatetags/category_for_home_page.json', 'r') as f:
+        list_of_categories_in_the_file = json.load(f)
+        list_categories = list_of_categories_in_the_file['required_category_name']
 
-    return Categories.objects.filter(id__in=required_category)
+    return Categories.objects.filter(name__in=list_categories)
 
 @register.simple_tag(takes_context=True)
 def change_params(context, **kwargs):
