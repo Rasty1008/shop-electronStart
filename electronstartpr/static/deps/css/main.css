@@ -135,10 +135,6 @@ h2 > span::after {
     height: 170px;
 }
 
-.category:hover {
-    border-color: #32CD32;
-}
-
 .main-products > span {
     display: block;
     color: #444444;
