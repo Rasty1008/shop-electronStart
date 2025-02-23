@@ -1,3 +1,5 @@
+
+from django.http import Http404
 from django.shortcuts import render
 from django.core.paginator import Paginator
 
@@ -8,15 +10,11 @@ from .models import Categories, Brands, Products, Quantity_of_poles, Rated_amper
 from .utils import q_search
 
 
-def catalog(request):
-
-    #Переменная все товары
-    goods = Products.objects.all()
+def catalog(request, category_slug):
 
     #Переменные Тип устройства и бренды
     categories_in_catalog = Categories.objects.order_by('id')
     brands = Brands.objects.order_by('name')
-    
     
     #Переменные характеристик
     product_quantity_of_poles = Quantity_of_poles.objects.annotate(
@@ -37,8 +35,16 @@ def catalog(request):
     order_by = request.GET.get('order_by', None)
     query = request.GET.get('q', None)
 
-    if query:
+    if category_slug == 'all-categories':
+        goods = Products.objects.all()
+
+    elif query:
         goods = q_search(query)
+
+    else:
+        goods = Products.objects.filter(category_id__slug=category_slug)
+        if not goods.exists():
+            raise Http404()
 
     if order_by and order_by != 'default':
         goods = goods.order_by(order_by)
@@ -47,15 +53,16 @@ def catalog(request):
     current_page = paginator.page(int(page))
 
     context = {
-        "title": "Каталог",
-        "goods": current_page,
+        'title': 'Каталог',
+        'goods': current_page,
+        'slug_category': category_slug,
 
-         'categories_in_catalog': categories_in_catalog,
-         'brands': brands,
-         'product_quantity_of_poles': product_quantity_of_poles,
-         'product_rated_amperage':  product_rated_amperage,
-         'product_rated_voltage': product_rated_voltage,
-         'product_amperage_type': product_amperage_type,
+        'categories_in_catalog': categories_in_catalog,
+        'brands': brands,
+        'product_quantity_of_poles': product_quantity_of_poles,
+        'product_rated_amperage':  product_rated_amperage,
+        'product_rated_voltage': product_rated_voltage,
+        'product_amperage_type': product_amperage_type,
 
     }
 
