@@ -75,7 +75,7 @@
                                         <a class="nav-link" href="{% url "main:contacts" %}">Контакты</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="users/login.html">Войти</a>
+                                        <a class="nav-link" href="{% url "user:login" %}">Войти</a>
                                     </li>
                                     <li class="nav-item dropdown ">
                                         <a class="nav-link dropdown-toggle text-white" href="#" role="button"
@@ -83,13 +83,13 @@
                                             Профиль
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="users/profile.html">Личный кабинет</a>
+                                            <li><a class="dropdown-item" href="{% url "user:profile" %}">Личный кабинет</a>
                                             </li>
                                             <li><a class="dropdown-item" href="{% url "admin:index" %}">Админ панель</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="#">Выйти</a></li>
+                                            <li><a class="dropdown-item" href="{% url "user:logout" %}">Выйти</a></li>
                                         </ul>
                                     </li>
                                 </ul>

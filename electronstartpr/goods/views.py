@@ -10,7 +10,7 @@ from .models import Categories, Brands, Products, Quantity_of_poles, Rated_amper
 from .utils import q_search
 
 
-def catalog(request, category_slug):
+def catalog(request, category_slug=None):
 
     #Переменные Тип устройства и бренды
     categories_in_catalog = Categories.objects.order_by('id')
