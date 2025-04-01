@@ -2,14 +2,14 @@ from django.db.models import Q
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 
-from .models import Products
+from .models import Product
 
 def q_search(query):
 
     vector = SearchVector('name', 'description', 'article')
     query = SearchQuery(query)
 
-    return Products.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gt=0).order_by('-rank')
+    return Product.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gt=0).order_by('-rank')
     
     #return Products.objects.filter(article__iexact=query)
     

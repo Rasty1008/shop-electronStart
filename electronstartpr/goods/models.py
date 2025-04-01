@@ -1,100 +1,166 @@
 from django.db import models
+from django.urls import reverse
 
-class Categories(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Название')
-    slug = models.SlugField(max_length=150, unique=True, blank=True, null=True, verbose_name='URL')
+    slug = models.SlugField(max_length=150, unique=True, blank=True, null=True, verbose_name='URL', db_index=True)
     image = models.ImageField(upload_to='goods_images', blank=True, null=True, verbose_name='Изображение')
 
     class Meta:
         db_table = 'category'
         verbose_name = 'Категорию'
         verbose_name_plural = 'Категории'
+        ordering = ['name']
 
     def __str__(self):
         return self.name
 
 
 
-class Brands(models.Model):
+class Brand(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Название')
-    slug = models.SlugField(max_length=150, unique=True, blank=True, null=True, verbose_name='URL')
+    slug = models.SlugField(max_length=150, unique=True, blank=True, null=True, verbose_name='URL', db_index=True)
 
     class Meta:
         db_table = 'brand'
         verbose_name = 'Бренд'
         verbose_name_plural = 'Бренды'
+        ordering = ['name']
 
     def __str__(self):
         return self.name
 
 
-class Quantity_of_poles(models.Model):
-    value = models.CharField(max_length=20, verbose_name='Количество полюсов')
+class QuantityOfPoles(models.Model):
+    value = models.IntegerField(verbose_name='Количество полюсов', db_index=True)
 
     class Meta:
         db_table = 'quantity_of_poles'
         verbose_name = 'Количество полюсов'
+        verbose_name_plural = 'Количество полюсов'
+        ordering = ['value']
+
+    def display_value(self):
+        return f"{self.value}P"
 
     def __str__(self):
-        return self.value
+        return self.display_value()
 
 
-class Rated_amperage(models.Model):
-    value = models.CharField(max_length=20, verbose_name='Номинальный ток')
+class RatedAmperage(models.Model):
+    value = models.IntegerField(verbose_name='Номинальный ток', db_index=True)
 
     class Meta:
         db_table = 'rated_amperage'
         verbose_name = 'Номинальный ток'
+        verbose_name_plural = 'Номинальные токи'
+        ordering = ['value']
+
+    def display_value(self):
+        return f"{self.value}A"
 
     def __str__(self):
-        return self.value
+        return self.display_value()
 
 
-class Rated_voltage(models.Model):
-    value = models.CharField(max_length=20, verbose_name='Номинальное напряжение')
+class RatedVoltage(models.Model):
+    value = models.IntegerField(verbose_name='Номинальное напряжение', db_index=True)
 
     class Meta:
         db_table = 'rated_voltage'
         verbose_name = 'Номинальное напряжение'
+        verbose_name_plural = 'Номинальные напряжения'
+        ordering = ['value']
 
+    def display_value(self):
+        return f"{self.value}V"
+    
     def __str__(self):
-        return self.value
+        return self.display_value()
 
+CURRENT_TYPE_CHOICES = [
+    ('AC', 'Переменный ток'),
+    ('DC', 'Постоянный ток'),
+    ('AC/DC', 'Переменный и постоянный ток')
+]
 
-class Amperage_type(models.Model):
-    value = models.CharField(max_length=20, verbose_name='Тип тока')
+class AmperageType(models.Model):
+    value = models.CharField(max_length=20,choices=CURRENT_TYPE_CHOICES, verbose_name='Тип тока')
 
     class Meta:
         db_table = 'amperage_type'
         verbose_name = 'Тип тока'
+        verbose_name_plural = 'Типы тока'
+        ordering = ['value']
 
     def __str__(self):
         return self.value
 
 
 
-class Products(models.Model):
-    name = models.CharField(max_length=150, verbose_name='Название')
-    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name='URL')
+class Product(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Название', db_index=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name='URL', db_index=True)
     description = models.TextField(blank=True, null=True, verbose_name='Описание')
-    article = models.CharField(max_length=100, unique=True, verbose_name='Артикул')
+    article = models.CharField(max_length=100, unique=True, verbose_name='Артикул', db_index=True)
     price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2, verbose_name='Цена')
     image = models.ImageField(upload_to='goods_images', blank=True, null=True, verbose_name='Изображение')
-    category_id = models.ForeignKey(to=Categories, null=True, on_delete=models.CASCADE, verbose_name='Категория')
-    brand_id = models.ForeignKey(to=Brands, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Бренд')
-    quantity_of_poles_id = models.ForeignKey(to=Quantity_of_poles, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Количество полюсов')
-    rated_amperage_id = models.ForeignKey(to=Rated_amperage, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Номинальный ток')
-    rated_voltage_id = models.ForeignKey(to=Rated_voltage, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Номинальное напряжение')
-    amperage_type_id = models.ForeignKey(to=Amperage_type, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Тип тока')
+    category = models.ForeignKey(
+        to=Category, 
+        null=True, 
+        on_delete=models.CASCADE, 
+        verbose_name='Категория',
+        related_name='products'
+        )
+    brand = models.ForeignKey(
+        to=Brand, 
+        null=True, 
+        blank=True, 
+        on_delete=models.CASCADE, 
+        verbose_name='Бренд',
+        related_name='products'
+        )
+    quantity_of_poles = models.ForeignKey(
+        to=QuantityOfPoles, 
+        null=True, 
+        blank=True, 
+        on_delete=models.CASCADE, 
+        verbose_name='Количество полюсов'
+        )
+    rated_amperage = models.ForeignKey(
+        to=RatedAmperage, 
+        null=True, 
+        blank=True, 
+        on_delete=models.CASCADE, 
+        verbose_name='Номинальный ток'
+        )
+    rated_voltage = models.ForeignKey(
+        to=RatedVoltage, 
+        null=True, 
+        blank=True, 
+        on_delete=models.CASCADE, 
+        verbose_name='Номинальное напряжение'
+        )
+    amperage_type = models.ForeignKey(
+        to=AmperageType, 
+        null=True, 
+        blank=True, 
+        on_delete=models.CASCADE, 
+        verbose_name='Тип тока'
+        )
 
     class Meta:
         db_table = 'product'
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
-        ordering = ('id',)
+        ordering = ['id']
 
     def __str__(self):
-        return self.name
+        return f"{self.name} (Артикул: {self.article})"
+    
+    def get_absolute_url(self):
+        return reverse('catalog:product', kwargs={'slug': self.slug})
+    
 
 
 

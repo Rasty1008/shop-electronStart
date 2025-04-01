@@ -1,35 +1,31 @@
 from django.contrib import admin
 
-from goods.models import Categories, Brands, Products, Quantity_of_poles, Rated_amperage, Rated_voltage, Amperage_type
+from goods.models import Category, Brand, Product, QuantityOfPoles, RatedAmperage, RatedVoltage, AmperageType
 
-#admin.site.register(Catigories)
-#admin.site.register(Brands)
-#admin.site.register(Products)
-
-@admin.register(Categories)
-class CatigoriesAdmin(admin.ModelAdmin):
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
 
-@admin.register(Brands)
-class BrandsAdmin(admin.ModelAdmin):
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
 
-@admin.register(Products)
-class ProductsAdmin(admin.ModelAdmin):
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
 
-@admin.register(Quantity_of_poles)
-class Quantity_of_polesAdmin(admin.ModelAdmin):
+@admin.register(QuantityOfPoles)
+class QuantityOfPolesAdmin(admin.ModelAdmin):
     list_display = ['value',]
 
-@admin.register(Rated_amperage)
-class Rated_amperageAdmin(admin.ModelAdmin):
+@admin.register(RatedAmperage)
+class RatedAmperageAdmin(admin.ModelAdmin):
     list_display = ['value',]
 
-@admin.register(Rated_voltage)
-class Rated_voltageAdmin(admin.ModelAdmin):
+@admin.register(RatedVoltage)
+class RatedVoltageAdmin(admin.ModelAdmin):
     list_display = ['value',]
 
-@admin.register(Amperage_type)
-class Amperage_typeAdmin(admin.ModelAdmin):
+@admin.register(AmperageType)
+class AmperageTypeAdmin(admin.ModelAdmin):
     list_display = ['value',]

@@ -1,77 +1,102 @@
 
-from django.http import Http404
-from django.shortcuts import render
-from django.core.paginator import Paginator
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from django.db.models import IntegerField, F, Value
-from django.db.models.functions import Cast, Replace
 
-from .models import Categories, Brands, Products, Quantity_of_poles, Rated_amperage, Rated_voltage, Amperage_type
+from .models import Category, Brand, Product, QuantityOfPoles, RatedAmperage, RatedVoltage, AmperageType
 from .utils import q_search
 
 
-def catalog(request, category_slug=None):
+def filter_goods(request, queryset):
+    """ Фильтрует товары по Get запросам """
 
-    #Переменные Тип устройства и бренды
-    categories_in_catalog = Categories.objects.order_by('id')
-    brands = Brands.objects.order_by('name')
-    
-    #Переменные характеристик
-    product_quantity_of_poles = Quantity_of_poles.objects.annotate(
-        q_of_pol_int = Cast(Replace(F('value'), Value('P'), Value('')), IntegerField())
-        ).order_by('q_of_pol_int') #Кол-во полюсов
+    # Получаем параметры фильтрации из GET-запроса
+    query = request.GET.get('q', None) # Поиск по названию
+    selected_category = request.GET.get('category')  # Тип устройства
+    selected_brands = request.GET.getlist('brand')  # Бренды
+    selected_poles = request.GET.getlist('poles')  # Количество полюсов
+    selected_amperages = request.GET.getlist('amperage')  # Номинальный ток
+    selected_voltages = request.GET.getlist('voltage')  # Номинальное напряжение
+    selected_amperage_types = request.GET.getlist('amperage_type')  # Тип тока
 
-    product_rated_amperage = Rated_amperage.objects.annotate(
-        voltage_int=Cast(Replace(F('value'), Value('A'), Value('')), IntegerField())
-        ).order_by('voltage_int') #Номинальный ток
 
-    product_rated_voltage = Rated_voltage.objects.annotate(
-        voltage_int = Cast(Replace(F('value'), Value('V'), Value('')), IntegerField())
-        ).order_by('voltage_int') #Ном.напряжение
-    
-    product_amperage_type = Amperage_type.objects.all() #тип тока
-       
-    page = request.GET.get('page', 1)
+    if query:
+        queryset = q_search(query)
+    if selected_category:
+        queryset = queryset.filter(category__slug=selected_category)
+    if selected_brands:
+        queryset = queryset.filter(brand__slug__in=selected_brands)
+    if selected_poles:
+        queryset = queryset.filter(quantity_of_poles__value__in=selected_poles)
+    if selected_amperages:
+        queryset = queryset.filter(rated_amperage__value__in=selected_amperages)
+    if selected_voltages:
+        queryset = queryset.filter(rated_voltage__value__in=selected_voltages)
+    if selected_amperage_types:
+        queryset = queryset.filter(amperage_type__value__in=selected_amperage_types)
+
     order_by = request.GET.get('order_by', None)
-    query = request.GET.get('q', None)
+    allowed_order_fields = ['name', 'price', '-price', 'id']
 
-    if category_slug == 'all-categories':
-        goods = Products.objects.all()
+    if order_by in allowed_order_fields:
+        queryset = queryset.order_by(order_by)
 
-    elif query:
-        goods = q_search(query)
+    selected_filters = {
+        'selected_category': selected_category,
+        'selected_brands': selected_brands,
+        'selected_poles': selected_poles,
+        'selected_amperages': selected_amperages,
+        'selected_voltages': selected_voltages,
+        'selected_amperage_types': selected_amperage_types,
+    }
+        
+    return queryset, selected_filters
 
-    else:
-        goods = Products.objects.filter(category_id__slug=category_slug)
-        if not goods.exists():
-            raise Http404()
 
-    if order_by and order_by != 'default':
-        goods = goods.order_by(order_by)
 
+
+def catalog(request):
+
+    # Переменные Тип устройства и бренды
+    categories_in_catalog = Category.objects.all()
+    brands = Brand.objects.all()
+    
+    # Переменные характеристик
+    product_quantity_of_poles = QuantityOfPoles.objects.all()
+    product_rated_amperage = RatedAmperage.objects.all()
+    product_rated_voltage = RatedVoltage.objects.all()
+    product_amperage_type = AmperageType.objects.all()
+
+    goods = Product.objects.all()
+    goods,selected_filters = filter_goods(request, goods)
+       
+    # Пагинация
     paginator = Paginator(goods, 3)
-    current_page = paginator.page(int(page))
+    page = request.GET.get('page', 1)
+    try:
+        current_page = paginator.page(page)
+    except PageNotAnInteger:
+        current_page = paginator.page(1)
+    except EmptyPage:
+        current_page = paginator.page(paginator.num_pages)
 
     context = {
         'title': 'Каталог',
         'goods': current_page,
-        'slug_category': category_slug,
-
         'categories_in_catalog': categories_in_catalog,
         'brands': brands,
         'product_quantity_of_poles': product_quantity_of_poles,
-        'product_rated_amperage':  product_rated_amperage,
+        'product_rated_amperage': product_rated_amperage,
         'product_rated_voltage': product_rated_voltage,
         'product_amperage_type': product_amperage_type,
-
+        **selected_filters,
     }
 
     return render(request, 'goods_templates/catalog.html', context)
 
 
-
 def product(request, product_slug):
-    product = Products.objects.get(slug=product_slug)
+    product = get_object_or_404(Product, slug=product_slug)
     context = {
         'title': 'Карточка товара',
         'product': product,
