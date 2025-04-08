@@ -72,13 +72,8 @@ def catalog(request):
        
     # Пагинация
     paginator = Paginator(goods, 3)
-    page = request.GET.get('page', 1)
-    try:
-        current_page = paginator.page(page)
-    except PageNotAnInteger:
-        current_page = paginator.page(1)
-    except EmptyPage:
-        current_page = paginator.page(paginator.num_pages)
+    page = request.GET.get('page')
+    current_page = paginator.get_page(page)   
 
     context = {
         'title': 'Каталог',

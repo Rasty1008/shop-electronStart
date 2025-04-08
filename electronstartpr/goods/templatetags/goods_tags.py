@@ -1,5 +1,5 @@
 from django import template
-from django.utils.http import urlencode
+from urllib.parse import urlencode
 from django.conf import settings
 from django.core.cache import cache
 from django.db.models import Case, When
@@ -34,7 +34,19 @@ def categories_tag():
     
 @register.simple_tag(takes_context=True)
 def change_params(context, **kwargs):
-    query = context['request'].GET.dict()
-    query.update(kwargs)
-    return urlencode(query)
+    query = context['request'].GET.copy()
+    for key, value in kwargs.items():
+        # Если значение — список, берём только первый элемент
+        if isinstance(value, (list, tuple)):
+            query[key] = str(value[0])
+        else:
+            query[key] = str(value)
+    return query.urlencode()
 
+
+
+@register.simple_tag
+def url_replace(request, field, value):
+    dict_ = request.GET.copy()
+    dict_[field] = value
+    return dict_.urlencode()
