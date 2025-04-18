@@ -39,6 +39,7 @@ def change_params(context, **kwargs):
         # Если значение — список, берём только первый элемент
         if isinstance(value, (list, tuple)):
             query[key] = str(value[0])
+            #query.setlist(key, [str(v) for v in value])
         else:
             query[key] = str(value)
     return query.urlencode()

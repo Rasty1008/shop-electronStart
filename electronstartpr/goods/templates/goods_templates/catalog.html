@@ -170,12 +170,12 @@
                                                 aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                                                 <div class="accordion-body">
     
-                                                    {% for amp_type in product_amperage_type %}
+                                                    {% for type in product_amperage_type %}
                                                     <label class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" name="type"
-                                                            value="{{ amp_type.value }}"
-                                                            {% if amp_type.value|stringformat:"s" in selected_amp_types %}checked{% endif %}>
-                                                        {{ amp_type.value }}
+                                                        <input class="form-check-input me-1" type="checkbox" name="amperage_type"
+                                                            value="{{ type.value }}"
+                                                            {% if type.value in selected_amperage_types %}checked{% endif %}>
+                                                        {{ type.value }}
                                                     </label>
                                                     {% endfor %}
     
