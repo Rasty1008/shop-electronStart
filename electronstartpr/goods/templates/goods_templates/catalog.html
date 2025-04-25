@@ -16,7 +16,10 @@
                         <div class="row">
 
                             <div class="category-menu col-3">
-                                <form method="get" action="{% url 'catalog:index' %}">
+                                <form method="get" action="{% url "catalog:index" %}">
+                                    {% if request.GET.q %}
+                                    <input type="hidden" name="q" value="{{ request.GET.q }}">
+                                    {% endif %}
                                     <div class="accordion accordion-flush" id="accordionFlushExample">
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="flush-headingOne">
@@ -194,11 +197,29 @@
                                     <div class="dropdown">
                                         <button class="btn btn-success dropdown-toggle btn-success" type="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">
-                                            Сортировать по цене
+                                            Сортировать
                                         </button>
 
-                                        <form action="{% if request.GET.q %}{% url "catalog:search" %}{% else %}{% url "catalog:index" %}{% endif %}" method="get" class="dropdown-menu bg-Light">
+                                        <form action="{% url "catalog:index" %}" method="get" class="dropdown-menu bg-Light">
                                             <p class="mx-3 mt-3">Сортировать:</p>
+                                            
+                                            <input type="hidden" name="category" value="{{ request.GET.category }}">
+                                            {% for brand in selected_brands %}
+                                                <input type="hidden" name="brand" value="{{ brand }}">
+                                            {% endfor %}
+                                            {% for pole in selected_poles %}
+                                                <input type="hidden" name="poles" value="{{ pole }}">
+                                            {% endfor %}
+                                            {% for amperage in selected_amperages %}
+                                                <input type="hidden" name="amperage" value="{{ amperage }}">
+                                            {% endfor %}
+                                            {% for voltage in selected_voltages %}
+                                                <input type="hidden" name="voltage" value="{{ voltage }}">
+                                            {% endfor %}
+                                            {% for amperage_type in selected_amperage_types %}
+                                                <input type="hidden" name="amperage_type" value="{{ amperage_type }}">
+                                            {% endfor %}
+
                                             <div class="form-check mx-3">
                                                 <input class="form-check-input" type="radio" name="order_by"
                                                     id="flexRadioDefault1" value="default"

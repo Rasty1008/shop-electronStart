@@ -35,10 +35,8 @@ def filter_goods(request, queryset):
     if selected_amperage_types:
         queryset = queryset.filter(amperage_type__value__in=selected_amperage_types)
 
-    order_by = request.GET.get('order_by', None)
-    allowed_order_fields = ['name', 'price', '-price', 'id']
-
-    if order_by in allowed_order_fields:
+    order_by = request.GET.get('order_by', 'default')
+    if order_by and order_by != 'default':
         queryset = queryset.order_by(order_by)
 
     selected_filters = {
@@ -48,6 +46,7 @@ def filter_goods(request, queryset):
         'selected_amperages': selected_amperages,
         'selected_voltages': selected_voltages,
         'selected_amperage_types': selected_amperage_types,
+        'order_by': order_by,
     }
         
     return queryset, selected_filters
@@ -68,7 +67,7 @@ def catalog(request):
     product_amperage_type = AmperageType.objects.all()
 
     goods = Product.objects.all()
-    goods,selected_filters = filter_goods(request, goods)
+    goods, selected_filters = filter_goods(request, goods)
        
     # Пагинация
     paginator = Paginator(goods, 3)
