@@ -28,11 +28,6 @@
                         {% endfor %}
                     </div>
                 </div>
-
-                <div class="d-grid gap-2 col-2 mx-auto py-4">
-                    <a class="btn btn-warning" href="{% url "catalog:index" %}" role="button">Перейти в каталог</a>
-                </div>
-
             </div>
         </div>
     </section>
@@ -48,24 +43,13 @@
 
                     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{% static "deps/img/Brands/electron.png" %}" class="d-block w-100" alt="...">
+                            {% for brand in brands %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            {% if brand.image %}
+                                <img src="{{ brand.image.url }}" class="d-block w-100" alt="...">
+                            {% endif %}
                             </div>
-                            <div class="carousel-item">
-                                <img src="{% static "deps/img/Brands/logo-abb.png" %}" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{% static "deps/img/Brands/logo-siemens.png" %}" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{% static "deps/img/Brands/logo-omron.png" %}" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{% static "deps/img/Brands/logo-eaton.png" %}" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{% static "deps/img/Brands/logo-legrand.png" %}" class="d-block w-100" alt="...">
-                            </div>
+                            {% endfor %}
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carousel"
                             data-bs-slide="prev">

@@ -143,26 +143,6 @@ h2 > span::after {
     
 }
 
-.btn-warning {
-    background-color: #FFA500;
-    color: #444444;
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    
-}
-
-.btn-warning:focus {
-    box-shadow: none;
-}
-
-
-.btn-warning:hover {
-    background-color: #FFA500;
-    border-color: #FFA500;
-    
-}
-
 .carousel {
     background-color: white;
 }

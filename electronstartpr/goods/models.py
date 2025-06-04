@@ -4,7 +4,7 @@ from django.urls import reverse
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Название')
     slug = models.SlugField(max_length=150, unique=True, blank=True, null=True, verbose_name='URL', db_index=True)
-    image = models.ImageField(upload_to='goods_images', blank=True, null=True, verbose_name='Изображение')
+    image = models.ImageField(upload_to='categories_images', blank=True, null=True, verbose_name='Изображение')
 
     class Meta:
         db_table = 'category'
@@ -20,7 +20,7 @@ class Category(models.Model):
 class Brand(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Название')
     slug = models.SlugField(max_length=150, unique=True, blank=True, null=True, verbose_name='URL', db_index=True)
-
+    image = models.ImageField(upload_to='brands_images', blank=True, null=True, verbose_name='Изображение')
     class Meta:
         db_table = 'brand'
         verbose_name = 'Бренд'
