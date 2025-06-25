@@ -151,7 +151,6 @@ INTERNAL_IPS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 AUTH_USER_MODEL = 'users.User'
-
 CATEGORY_JSON_PATH = 'electronstartpr/goods/templatetags/category_for_home_page.json'
+LOGIN_URL = '/user/login/'
