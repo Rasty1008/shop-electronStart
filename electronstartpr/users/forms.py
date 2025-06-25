@@ -1,8 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 
 from users.models import User 
-import re
+from users.mixins.form_mixins import PhoneValidationMixin
+
 
 class UserLoginForm(AuthenticationForm):
     class Meta:
@@ -12,7 +13,7 @@ class UserLoginForm(AuthenticationForm):
     username = forms.CharField()
     password = forms.CharField()
 
-class UserRegistrationForm(UserCreationForm):
+class UserRegistrationForm(PhoneValidationMixin, UserCreationForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
@@ -22,13 +23,16 @@ class UserRegistrationForm(UserCreationForm):
     username = forms.CharField()
     email = forms.CharField()
     password1 = forms.CharField()
-    password2 = forms.CharField()
+    password2 = forms.CharField()   
 
-    def clean_username(self):
-        username = self.cleaned_data['username']
-        if not re.match(r'^\+?\d{10,15}$', username):
-            raise forms.ValidationError('Введите корректный номер телефона.')
-        return username    
+class ProfileForm(PhoneValidationMixin, UserChangeForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'username', 'email')
 
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    username = forms.CharField()
+    email = forms.CharField()
 
     
