@@ -1,8 +1,7 @@
+/* === Базовые стили === */
 html, body {
     height: 100%;
-
 }
-
 
 body {
     min-width: 320px;
@@ -27,28 +26,25 @@ body {
     max-width: 1500px;
 }
 
-
+/* === Ссылки === */
 a {
     color: #444444;
     text-decoration: none;
     background-color: transparent;
 }
-
 a:hover {
     color: #444444;
 }
 
+/* === Заголовки === */
 h2 {
     font-size: 30px;
     color: #444444;
     text-transform: capitalize;
-    
 }
- 
 h2 > span {
     position: relative;
 }
-
 h2 > span::after {
     content: "";
     height: 2px;
@@ -56,75 +52,72 @@ h2 > span::after {
     width: 40%;
     margin-left: -20%;
     left: 50%;
-    top:120%;
+    top: 120%;
     position: absolute;
 }
 
-
+/* === Шапка === */
 .header {
-    background: linear-gradient(to left, #FFA500, #FFA500, 50%, #32cd32 75%, #32CD32 75%);
+    background: linear-gradient(to left, #FFA500, #FFA500 50%, #32cd32 75%, #32CD32 75%);
     top: 0;
     position: sticky;
     width: 100%;
     z-index: 2;
 }
 
+/* === Формы и кнопки === */
 .form-control:focus {
     box-shadow: none;
     border-color: rgb(198,176,14);
 }
-
 .form-control::placeholder {
     color: gray;
 }
-
-
 .btn-outline-dark {
-    border-color: rgb(198,176,14);
+    border-color: #FFA500 !important;
     color: black;
+    box-shadow: none !important;
 }
-
-.btn-outline-dark:focus {
-    box-shadow: none;
-}
-
-.btn-outline-dark:hover {
-    background-color: var(--orange-color);
-    border-color: rgb(198,176,14);
-    
-}
-
+.btn-outline-dark:focus,
 .btn-outline-dark:active {
     box-shadow: none !important;
 }
-
-
-
-.nav-link, .nav-link:hover, .nav-link:focus {
-    color: white;
+.btn-outline-dark:hover {
+    background-color: #FFA500;
+    border-color: rgb(198,176,14);
+    color: #fff;
 }
 
-
-
-.main-menu > ul > li {
-    letter-spacing: 1px;
-    color: white;
-    position: relative;
-}
-
-.main-menu > ul > li > a {
-    font-size: 18px;
-}
-
-.main-menu > ul > li:hover::after {
-    opacity: 1;
+/* === Меню навигации === */
+.main-menu .nav {
     width: 100%;
 }
-
+.main-menu .nav-item {
+    flex: 1 1 0;
+    text-align: center;
+}
+.main-menu .nav-link {
+    width: 100%;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    color: #212529;
+    font-size: 18px;
+    transition: background 0.2s, color 0.2s;
+}
+.main-menu .nav-link:hover,
+.main-menu .nav-link:focus,
+.main-menu .nav-link.active,
+.main-menu .nav-item.active .nav-link {
+    background: #FFA500;
+    color: #fff;
+    border-radius: 5px;
+}
 .dropdown-toggle::after {
     content: none;
-  }
+}
 
+/* === Основные блоки === */
 .main-title {
     padding-bottom: 30px;
 }
@@ -133,6 +126,20 @@ h2 > span::after {
     border: 1px solid #E6E6E6;
     text-align: center;
     height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.category img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    max-height: 100px;
 }
 
 .main-products > span {
@@ -140,56 +147,162 @@ h2 > span::after {
     color: #444444;
     font-size: 17px;
     line-height: 25px;
-    
 }
 
 .carousel {
     background-color: white;
 }
-
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
     background-color: #444444;
-
 }
-
 section {
     padding: 50px 0;
 }
-
 .brands {
     padding-top: 20px;
     z-index: 1;
 }
-
-.contacts-wrapper, .contacts-footer, .work-schedule {
+.contacts-wrapper,
+.contacts-footer,
+.work-schedule {
     padding: 20px 0;
-    
 }
-
-
 .icon {
     margin-right: 10px;
 }
-
 i {
     font-size: 24px;
 }
-
 .container-inst {
     margin-right: 45px;
 }
-
 footer {
-    background: linear-gradient(to left, #FFA500, #FFA500, 50%, #32cd32 75%, #32CD32 75%);
+    background: linear-gradient(to left, #FFA500, #FFA500 50%, #32cd32 75%, #32CD32 75%);
     color: white;
 }
-
 .info {
     text-align: center;
 }
-
 .col-lg-10 {
     margin-left: 70px;
 }
 
+/* === Адаптивность === */
+
+/* --- Планшеты и ниже --- */
+@media (max-width: 991.98px) {
+    .main-wrapper {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    .col-lg-10 {
+        margin-left: 0;
+    }
+    .main-title {
+        font-size: 22px;
+        padding-bottom: 15px;
+    }
+    .main-menu .nav-link {
+        font-size: 16px;
+        padding: 8px 0;
+    }
+    .main-menu .nav-item {
+        flex: 1 1 100%;
+    }
+    .main-menu .nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* --- Мобильные устройства --- */
+@media (max-width: 767.98px) {
+    .main-title {
+        font-size: 18px;
+        padding-bottom: 10px;
+    }
+    .main-menu .nav-link {
+        font-size: 15px;
+        padding: 6px 0;
+    }
+    .main-menu .nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .main-menu .nav-item {
+        text-align: left;
+    }
+    .carousel {
+        min-height: 180px;
+    }
+    .table-category .category {
+        height: 100px;
+        font-size: 14px;
+    }
+    .category img {
+        max-height: 70px;
+    }
+    section {
+        padding: 20px 0;
+    }
+
+    /* Контакты и футер */
+    .contacts-wrapper .row,
+    .contacts-footer .row {
+        flex-direction: column !important;
+    }
+    .contacts-wrapper .col-md-4,
+    .contacts-footer .col {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .adreess,
+    .phones,
+    .mail-inst {
+        justify-content: center !important;
+        text-align: center;
+    }
+    .contacts-wrapper .icon,
+    .contacts-footer .icon {
+        margin-right: 10px;
+        margin-left: 0;
+    }
+    .contacts-wrapper .numbers,
+    .contacts-wrapper .container-mail,
+    .contacts-wrapper .container-inst,
+    .contacts-footer .numbers,
+    .contacts-footer .container-mail,
+    .contacts-footer .container-inst {
+        text-align: center;
+    }
+    .contacts-wrapper .icon.py-4,
+    .contacts-footer .icon.py-4 {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+}
+
+/* --- Очень маленькие экраны --- */
+@media (max-width: 575.98px) {
+    .main-title {
+        font-size: 15px;
+        padding-bottom: 10px;
+    }
+    .main-wrapper {
+        padding: 0 2px;
+    }
+    .main-menu .nav-link {
+        font-size: 13px;
+        padding: 4px 0;
+    }
+    .carousel {
+        min-height: 100px;
+    }
+    .icon, i {
+        font-size: 18px;
+    }
+}

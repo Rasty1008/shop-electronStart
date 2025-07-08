@@ -20,7 +20,7 @@
                         <div class="col-md-3 category">
                             
                                 {% if category.image %}
-                                    <img src="{{ category.image.url }}" alt="">
+                                    <img src="{{ category.image.url }}" class="img-fluid" alt="">
                                 {% endif %}
                                 <p>{{category.name}}</p>
                             
@@ -46,7 +46,7 @@
                             {% for brand in brands %}
                             <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             {% if brand.image %}
-                                <img src="{{ brand.image.url }}" class="d-block w-100" alt="...">
+                                <img src="{{ brand.image.url }}" class="d-block w-100 img-fluid" alt="...">
                             {% endif %}
                             </div>
                             {% endfor %}
