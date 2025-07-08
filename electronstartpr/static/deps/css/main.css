@@ -163,11 +163,13 @@ section {
     padding-top: 20px;
     z-index: 1;
 }
+
 .contacts-wrapper,
 .contacts-footer,
 .work-schedule {
     padding: 20px 0;
 }
+
 .icon {
     margin-right: 10px;
 }

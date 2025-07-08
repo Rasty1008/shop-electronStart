@@ -1,19 +1,23 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import TemplateView
 from goods.models import Brand
+from django.conf import settings
 
+class IndexView(TemplateView):
+    template_name = 'main_templates/index.html'
 
-def index(request):
-    brands = Brand.objects.all()
-    context = {
-        'title': 'Электромаркет',
-        'brands': brands,
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Электромаркет'
+        context['brands'] = Brand.objects.all()
+        context['google_maps_iframe'] = settings.GOOGLE_MAPS_IFRAME
+        return context
+    
+class ContactsView(TemplateView):
+    template_name = 'main_templates/contacts.html'
 
-    return render(request, 'main_templates/index.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Контакты'
+        context['google_maps_iframe'] = settings.GOOGLE_MAPS_IFRAME
+        return context
 
-def contacts_page(request):
-    context = {
-        'title': 'Контакты',
-    }
-    return render(request, 'main_templates/contacts.html', context)
