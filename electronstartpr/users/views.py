@@ -11,7 +11,6 @@ from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
 class UserLoginView(LoginView):
     template_name = 'users/login.html'
     authentication_form = UserLoginForm
-    #success_url = reverse_lazy('main:index')
 
     def get_success_url(self):
         redirect_page = self.request.POST.get('next', None)
