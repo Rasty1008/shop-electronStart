@@ -10,7 +10,7 @@ class CatalogListView(ListView):
     template_name = 'goods_templates/catalog.html'
     context_object_name = 'goods'
     paginate_by = 3
-    allow_empty = False
+    allow_empty = True
 
     def get_queryset(self):
         queryset = super().get_queryset()
