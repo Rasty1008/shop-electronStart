@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -47,6 +48,8 @@ INSTALLED_APPS = [
     'goods',
     'users',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -156,3 +159,11 @@ CATEGORY_JSON_PATH = 'electronstartpr/goods/templatetags/category_for_home_page.
 LOGIN_URL = '/user/login/'
 LOGIN_REDIRECT_URL = '/'
 GOOGLE_MAPS_IFRAME = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d363.26456319937796!2d76.8810630620944!3d43.24898001855118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3883696299553da7%3A0x13c78792b1aaa4b0!2sElektroN!5e0!3m2!1sru!2skz!4v1729086091394!5m2!1sru!2skz'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "noreply.electronstart@gmail.com"
+EMAIL_HOST_PASSWORD = "rmze sapz tvac vche"
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

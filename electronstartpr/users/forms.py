@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm, PasswordResetForm, SetPasswordForm
 
 from users.models import User 
 from users.mixins.form_mixins import PhoneValidationMixin
@@ -35,4 +35,33 @@ class ProfileForm(PhoneValidationMixin, UserChangeForm):
     username = forms.CharField()
     email = forms.CharField()
 
+class UserForgotpasswordForm(PasswordResetForm):
+
+    '''Запрос на восстановление пароля пользователя'''
+
+    def __init__(self, *args, **kwargs):
+
+        '''Обновлени стилей формы'''
+
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+                'autocomplete': 'off',
+            })
+
+class UserSetPasswordForm(SetPasswordForm):
+
+    '''Изменение пароля пользователя'''
+
+    def __init__(self, *args, **kwargs):
+
+        '''Обновление стилей формы'''
+
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+                'autocomplete': 'off',
+            })
     
