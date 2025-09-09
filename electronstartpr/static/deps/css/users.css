@@ -1,10 +1,17 @@
 .btn-block {
     background-color: #FFA500;
+    border-color: #FFA500;
 }
 
-.btn-block:active {
+.btn-block:active, 
+.btn-block:focus {
+    background-color: #cc8400 !important;
+    border-color: #cc8400 !important;
     box-shadow: none !important;
-    
 }
 
+.btn-block:hover {
+    background-color: #e59400;
+    border-color: #e59400;
+}
 

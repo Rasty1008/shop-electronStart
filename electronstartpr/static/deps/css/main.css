@@ -130,7 +130,7 @@ h2 > span::after {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    
 }
 
 .category img {
