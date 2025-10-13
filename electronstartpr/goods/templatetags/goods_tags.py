@@ -27,7 +27,7 @@ def categories_tag():
             categories = Category.objects.filter(name__in=list_categories).order_by(preserve_order)
 
             # Кеширование результата
-            cache.set('categories_tag', categories, 60 * 60) # Кэшируем на 1 час
+            cache.set('categories_tag', categories, 60 * 60) # Кэшируем на 60 мин
         return categories
     except(FileNotFoundError, json.JSONDecodeError) as e:
         return Category.objects.none() # В случае ошибки возврат пустого QuerySet

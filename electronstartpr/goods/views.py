@@ -30,7 +30,7 @@ class CatalogListView(ListView):
             **getattr(self, 'selected_filters', {}),
         })
         return context
-    
+
 class ProductDetailView(DetailView):
     template_name = 'goods_templates/product.html'
     context_object_name = 'product'

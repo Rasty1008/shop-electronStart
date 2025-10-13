@@ -1,5 +1,6 @@
 
 {% extends "base.html" %}
+{% load cache %}
 {% load static %}
 {% load goods_tags %}
 
@@ -20,6 +21,7 @@
                                     {% if request.GET.q %}
                                     <input type="hidden" name="q" value="{{ request.GET.q }}">
                                     {% endif %}
+                                    {% cache 300 filters %}
                                     <div class="accordion accordion-flush" id="accordionFlushExample">
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="flush-headingOne">
@@ -33,7 +35,7 @@
                                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                                 <div class="accordion-body">
                                                     <div class="list-group">
-    
+                                                        
                                                         {% for category in categories_in_catalog %}
                                                             <label class="list-group-item">
                                                                 <input class="form-check-input me-1" type="radio" name="category"
@@ -181,6 +183,7 @@
                                                         {{ type.value }}
                                                     </label>
                                                     {% endfor %}
+                                                    {% endcache %}
     
                                                 </div>
                                             </div>
@@ -260,6 +263,7 @@
                                     {% endif %}
 
                                     {% for product in goods %}
+                                    {% cache 600 product_card product.id %}
                                     <div class="col-lg-4 col-md-6 py-3">
                                         <div class="card" style="width: 18rem;">
                                             {% if product.image %}
@@ -285,6 +289,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% endcache %}
                                     {% endfor %}
 
                                 </div>

@@ -3,6 +3,7 @@ template
 env/
 .pylintrc
 __pycache__/
+cache/
 
 .vscode
 .idea
