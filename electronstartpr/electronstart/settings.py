@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+from os import environ
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(npj#6^k!1)h*m4ih3!s0lfr(7zf94xj#kai82ow&ue#xh)ytm'
+SECRET_KEY = environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -90,11 +92,11 @@ WSGI_APPLICATION = 'electronstart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_electron',
-        'HOST': 'localhost',
-        'PORT': 5432,
-        'USER': 'admin',
-        'PASSWORD': 'electron',
+        'NAME': environ.get('POSTGRES_DB'),
+        'HOST': 'db',
+        'PORT': int(environ.get('POSTGRES_PORT')),
+        'USER': environ.get('POSTGRES_USER'),
+        'PASSWORD': environ.get('POSTGRES_PASSWORD'),
 
     }
 }
@@ -143,9 +145,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-    ]
+if DEBUG:
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+        ]
+    
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = 'media/'
 
@@ -165,12 +171,12 @@ AUTH_USER_MODEL = 'users.User'
 CATEGORY_JSON_PATH = 'electronstartpr/goods/templatetags/category_for_home_page.json'
 LOGIN_URL = '/user/login/'
 LOGIN_REDIRECT_URL = '/'
-GOOGLE_MAPS_IFRAME = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d363.26456319937796!2d76.8810630620944!3d43.24898001855118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3883696299553da7%3A0x13c78792b1aaa4b0!2sElektroN!5e0!3m2!1sru!2skz!4v1729086091394!5m2!1sru!2skz'
+GOOGLE_MAPS_IFRAME = environ.get('GOOGLE_MAPS_IFRAME')
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "noreply.electronstart@gmail.com"
-EMAIL_HOST_PASSWORD = "rmze sapz tvac vche"
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_BACKEND = environ.get('EMAIL_BACKEND')
+EMAIL_HOST = environ.get('EMAIL_HOST')
+EMAIL_PORT = int(environ.get('EMAIL_PORT'))
+EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS')
+EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL')

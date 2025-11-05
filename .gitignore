@@ -1,4 +1,5 @@
 
+.env
 template
 env/
 .pylintrc
@@ -10,3 +11,7 @@ cache/
 
 db.sqlite3
 media/
+
+/data
+compose.yml
+Dockerfile
