@@ -27,10 +27,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = environ.get('DEBUG')
+DEBUG = environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = ['*']
+if environ.get('ALLOWED_HOSTS'):
+    ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS').split()
+else:
+    ALLOWED_HOSTS = ['*']
 
+if environ.get('CSRF_TRUSTED_ORIGINS'):
+    CSRF_TRUSTED_ORIGINS = environ.get('CSRF_TRUSTED_ORIGINS').split()
 
 # Application definition
 
@@ -94,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': environ.get('POSTGRES_DB'),
         'HOST': 'db',
-        'PORT': int(environ.get('POSTGRES_PORT')),
+        'PORT': environ.get('POSTGRES_PORT'),
         'USER': environ.get('POSTGRES_USER'),
         'PASSWORD': environ.get('POSTGRES_PASSWORD'),
 
@@ -175,7 +180,7 @@ GOOGLE_MAPS_IFRAME = environ.get('GOOGLE_MAPS_IFRAME')
 
 EMAIL_BACKEND = environ.get('EMAIL_BACKEND')
 EMAIL_HOST = environ.get('EMAIL_HOST')
-EMAIL_PORT = int(environ.get('EMAIL_PORT'))
+EMAIL_PORT = environ.get('EMAIL_PORT')
 EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS')
 EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')
