@@ -21,7 +21,7 @@
                                     {% if request.GET.q %}
                                     <input type="hidden" name="q" value="{{ request.GET.q }}">
                                     {% endif %}
-                                    {% cache 300 filters %}
+                                    
                                     <div class="accordion accordion-flush" id="accordionFlushExample">
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="flush-headingOne">
@@ -183,7 +183,7 @@
                                                         {{ type.value }}
                                                     </label>
                                                     {% endfor %}
-                                                    {% endcache %}
+                                                    
     
                                                 </div>
                                             </div>

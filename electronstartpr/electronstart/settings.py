@@ -106,10 +106,17 @@ DATABASES = {
     }
 }
 
+REDIS_URL = environ.get('REDIS_URL')
+
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": BASE_DIR / 'cache',
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": REDIS_URL,
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "KEY_PREFIX": "electronstart",
+        "TIMEOUT": 300
     }
 }
 
@@ -173,7 +180,7 @@ INTERNAL_IPS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
-CATEGORY_JSON_PATH = 'electronstartpr/goods/templatetags/category_for_home_page.json'
+CATEGORY_JSON_PATH = 'goods/templatetags/category_for_home_page.json'
 LOGIN_URL = '/user/login/'
 LOGIN_REDIRECT_URL = '/'
 GOOGLE_MAPS_IFRAME = environ.get('GOOGLE_MAPS_IFRAME')

@@ -12,7 +12,7 @@ import logging
 logger = logging.getLogger(__name__)
 register = template.Library()
 
-CATEGORY_JSON_PATH = getattr(settings, 'CATEGORY_JSON_PATH', 'electronstartpr/goods/templatetags/category_for_home_page.json')
+CATEGORY_JSON_PATH = getattr(settings, 'CATEGORY_JSON_PATH', 'goods/templatetags/category_for_home_page.json')
 
 '''
 @register.simple_tag()

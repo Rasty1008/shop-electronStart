@@ -5,7 +5,6 @@ Django==4.2.16
 django-autoslug==1.9.9
 django-debug-toolbar==5.0.1
 django-filter==25.1
-dotenv==0.9.9
 executing==2.1.0
 ipython==8.30.0
 jedi==0.19.2
@@ -24,4 +23,5 @@ stack-data==0.6.3
 traitlets==5.14.3
 tzdata==2024.2
 wcwidth==0.2.13
-gunicorn
+gunicorn==20.1.0
+django-redis==5.2.0
