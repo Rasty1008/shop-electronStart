@@ -1,0 +1,59 @@
+services:
+  web:
+    build:
+      context: ./electronstartpr
+      dockerfile: Dockerfile
+    image: electronstart_image_web:1.0.0
+    command: gunicorn electronstart.wsgi:application --bind 0.0.0.0:8000 --access-logfile '-'
+    expose:
+      - 8000
+    volumes:
+      - static_volume:/usr/src/electronstartpr/static
+      - media_volume:/usr/src/electronstartpr/media
+    restart: unless-stopped #no, always, on-failure: 5, unless-stopped
+    env_file:
+      - ./electronstartpr/.env
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:16-bookworm
+    volumes:
+      - data:/var/lib/postgresql/data
+    restart: unless-stopped #no, always, on-failure: 5, unless-stopped
+    environment:
+      - POSTGRES_DB=db_electron
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=electron
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped #no, always, on-failure: 5, unless
+    volumes:
+      - redis_data:/data
+    #Для локальной отладки не перебрасывать порт наружу
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  nginx:
+    build: ./nginx
+    image: electronstart_image_nginx:1.0.0
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    ports:
+      - "8001:80"
+    depends_on:
+      - web
+
+volumes:
+  data:
+  static_volume:
+  media_volume:
+  redis_data:
