@@ -185,7 +185,7 @@ LOGIN_URL = '/user/login/'
 LOGIN_REDIRECT_URL = '/'
 GOOGLE_MAPS_IFRAME = environ.get('GOOGLE_MAPS_IFRAME')
 
-EMAIL_BACKEND = environ.get('EMAIL_BACKEND')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = environ.get('EMAIL_HOST')
 EMAIL_PORT = environ.get('EMAIL_PORT')
 EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS')

@@ -2,6 +2,7 @@
 .env
 template
 env/
+venv/
 .pylintrc
 __pycache__/
 cache/
@@ -11,6 +12,6 @@ cache/
 
 db.sqlite3
 media/
+sets/
 
-/data
-/sets
+Dockerfile
