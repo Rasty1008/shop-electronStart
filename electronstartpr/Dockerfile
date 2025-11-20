@@ -1,7 +1,7 @@
 
 FROM python:3.11-slim
 
-RUN useradd -s /bim/sh -u 1234 nonroot
+RUN useradd -s /bin/sh -u 1234 nonroot
 
 WORKDIR /usr/src/electronstartpr
 

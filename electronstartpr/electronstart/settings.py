@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = environ.get('DEBUG', False)
+DEBUG = environ.get('DEBUG', 'False') == 'True'
 
 if environ.get('ALLOWED_HOSTS'):
     ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS').split()
@@ -36,6 +36,22 @@ else:
 
 if environ.get('CSRF_TRUSTED_ORIGINS'):
     CSRF_TRUSTED_ORIGINS = environ.get('CSRF_TRUSTED_ORIGINS').split()
+
+if not DEBUG:
+    # Security settings for production
+    SECURE_SSL_REDIRECT = False  # Пока без SSL, потом поменяете на True
+    SESSION_COOKIE_SECURE = False  # Пока без SSL, потом True
+    CSRF_COOKIE_SECURE = False  # Пока без SSL, потом True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_HSTS_SECONDS = 0  # Пока 0, после SSL установите 31536000 (1 год)
+
+    # После установки SSL раскомментируйте следующие строки
+    # SECURE_SSL_REDIRECT = True
+    # SESSION_COOKIE_SECURE = True
+    # CSRF_COOKIE_SECURE = True
+    # SECURE_HSTS_SECONDS = 31536000
 
 # Application definition
 
@@ -49,12 +65,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
 
-    'debug_toolbar',
-
     'main',
     'goods',
     'users',
 ]
+
+if DEBUG:
+    INSTALLED_APPS += ['debug_toolbar']
 
 SITE_ID = 1
 
@@ -67,8 +84,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+if DEBUG:
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 ROOT_URLCONF = 'electronstart.urls'
 
