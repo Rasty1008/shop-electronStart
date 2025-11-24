@@ -45,11 +45,11 @@
                         <div class="carousel-inner">
                             {% brands_tag_cache as brands %}
                             {% for brand in brands %}
-                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             {% if brand.image %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
                                 <img src="{{ brand.image.url }}" class="d-block w-100 img-fluid" alt="...">
-                            {% endif %}
                             </div>
+                            {% endif %}
                             {% endfor %}
                             
                         </div>
